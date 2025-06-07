@@ -39,17 +39,22 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        val d = File(this.dataDir, "golog").apply { mkdirs() }
-        Log.e(TAG, "onCreate: d = ${d.absolutePath}")
-        na.initLog(d.absolutePath)
+
 
         thread {
             val s = na.stringFromJNI()
             Log.i(TAG, "stringFromJNI: $s")
 
+            val d = File(this.dataDir, "log").apply { mkdirs() }
+            Log.e(TAG, "onCreate: d = ${d.absolutePath}")
+            na.initLog(d.absolutePath)
             repeat(10) {
+                na.logDebug(TAG, "Hello from thread $it")
                 na.logInfo(TAG, "Hello from thread $it")
+                na.logWarn(TAG, "Hello from thread $it")
+                na.logError(TAG, "Hello from thread $it")
             }
+            na.closeLogger()
         }
     }
 }

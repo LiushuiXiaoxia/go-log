@@ -9,7 +9,12 @@ class NativeLib {
     external fun stringFromJNI(): String
 
     external fun initLog(dir: String)
+    external fun closeLogger()
+
+    external fun logDebug(tag: String, message: String)
     external fun logInfo(tag: String, message: String)
+    external fun logWarn(tag: String, message: String)
+    external fun logError(tag: String, message: String)
 
     companion object {
         // Used to load the 'golog' library on application startup.

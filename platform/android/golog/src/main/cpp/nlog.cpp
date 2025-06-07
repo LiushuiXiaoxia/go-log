@@ -26,6 +26,25 @@ Java_com_example_golog_NativeLib_initLog(
 }
 
 extern "C" JNIEXPORT void JNICALL
+Java_com_example_golog_NativeLib_closeLogger(
+        JNIEnv* env,
+        jobject thiz) {
+    CloseLogger();
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_example_golog_NativeLib_logDebug(
+        JNIEnv* env,
+        jobject thiz,
+        jstring tag,
+        jstring msg
+        ) {
+    char* ctag = jstringToCString(env, tag);
+    char* cmsg = jstringToCString(env, msg);
+    LogDebug(ctag, cmsg);
+}
+
+extern "C" JNIEXPORT void JNICALL
 Java_com_example_golog_NativeLib_logInfo(
         JNIEnv* env,
         jobject thiz,
@@ -35,4 +54,28 @@ Java_com_example_golog_NativeLib_logInfo(
     char* ctag = jstringToCString(env, tag);
     char* cmsg = jstringToCString(env, msg);
     LogInfo(ctag, cmsg);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_example_golog_NativeLib_logWarn(
+        JNIEnv* env,
+        jobject thiz,
+        jstring tag,
+        jstring msg
+        ) {
+    char* ctag = jstringToCString(env, tag);
+    char* cmsg = jstringToCString(env, msg);
+    LogWarn(ctag, cmsg);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_example_golog_NativeLib_logError(
+        JNIEnv* env,
+        jobject thiz,
+        jstring tag,
+        jstring msg
+        ) {
+    char* ctag = jstringToCString(env, tag);
+    char* cmsg = jstringToCString(env, msg);
+    LogError(ctag, cmsg);
 }
