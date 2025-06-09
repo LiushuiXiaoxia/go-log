@@ -1,5 +1,5 @@
 ANDROID_OUT=build_output/jniLibs
-ANDROID_SDK=$(HOME)/dev/AndroidSdk
+ANDROID_SDK=$(ANDROID_HOME)
 NDK_BIN=$(ANDROID_SDK)/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin
 GO_FILES=golog.go
 SO_NAME=libgolog.so
